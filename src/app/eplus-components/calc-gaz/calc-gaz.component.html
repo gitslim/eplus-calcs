@@ -1,0 +1,86 @@
+<form class="form-horizontal" [formGroup]="form" novalidate>
+  <div class="form-group">
+    <label class="col-sm-4 control-label">Вид работ</label>
+    <div class="col-sm-8">
+      <div class="col-sm-12" formGroupName="type">
+        <input id="projectVP" type="checkbox" formControlName="projectVP">
+        <label for="projectVP">проект на внутриплощадочный газопровод</label>
+      </div>
+
+      <div class="col-sm-12" formGroupName="type">
+        <input id="projectV" type="checkbox" formControlName="projectV">
+        <label for="projectV">проект на внутренний газопровод</label>
+      </div>
+      <div class="col-sm-12" formGroupName="type">
+        <input id="smrVP" type="checkbox" formControlName="smrVP">
+        <label for="smrVP">монтаж внутриплощадочного газопровода</label>
+      </div>
+      <div class="col-sm-12" formGroupName="type">
+        <input id="smrV" type="checkbox" formControlName="smrV">
+        <label for="smrV">монтаж внутреннего газопровода</label>
+      </div>
+      <app-control-messages [control]="form.controls.type"></app-control-messages>
+    </div>
+  </div>
+
+
+  <div class="form-group show-valid" formGroupName="data"
+       *ngIf="form.controls.type.controls.projectVP.value || form.controls.type.controls.smrVP.value">
+    <label class="col-sm-4 control-label">Протяженность, м</label>
+    <div class="col-sm-8">
+      <input class="form-control" type="text"
+             placeholder="Ориентировочная протяженность внутриплощадочного газопровода, м"
+             formControlName="gazLen">
+      <app-control-messages [control]="form.controls.data.controls.gazLen"></app-control-messages>
+    </div>
+  </div>
+
+  <div class="form-group show-valid" formGroupName="data"
+       *ngIf="form.controls.type.controls.projectV.value || form.controls.type.controls.smrV.value">
+    <label class="col-sm-4 control-label">Мощность, МВт</label>
+    <div class="col-sm-8">
+      <input class="form-control" type="text"
+             placeholder="Ориентировочная мощность газоиспользующего оборудования, МВт"
+             formControlName="gazPower">
+      <app-control-messages [control]="form.controls.data.controls.gazPower"></app-control-messages>
+    </div>
+  </div>
+
+  <div class="form-group show-valid">
+    <label class="col-sm-4 control-label">Ваше имя</label>
+    <div class="col-sm-8">
+      <input class="form-control" type="text" placeholder="Ваше имя" formControlName="name">
+      <app-control-messages [control]="form.controls.name"></app-control-messages>
+    </div>
+  </div>
+
+  <div class="form-group show-valid">
+    <label class="col-sm-4 control-label">Телефон или email</label>
+    <div class="col-sm-8">
+      <input class="form-control" type="text" placeholder="Телефон или email" formControlName="phoneOrEmail">
+      <app-control-messages [control]="form.controls.phoneOrEmail"></app-control-messages>
+    </div>
+  </div>
+
+
+  <div class="form-group">
+    <label class="col-sm-4 control-label">
+      <button class="btn btn-theme" [disabled]="!form.valid" (click)="submitForm()">Рассчитать</button>
+    </label>
+    <div class="col-sm-8"></div>
+  </div>
+
+  <div class="form-group show-valid">
+    <label class="col-sm-4 control-label">Стоимость, руб</label>
+    <div class="col-sm-8">
+      <input class="form-control result" type="text" formControlName="result" disabled>
+      <!--<div *ngIf="form.controls.result.value">-->
+      <!--<p>-->
+      <!--Указанная стоимость является ориентировочной и существенно зависит от особенностей Вашего объекта.<br>-->
+      <!--Получить подробную консультацию и/или вызвать нашего специалиста на объект вы можете по тел. 8-->
+      <!--(495) 961-26-97-->
+      <!--</p>-->
+      <!--</div>-->
+    </div>
+  </div>
+</form>

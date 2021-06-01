@@ -1,0 +1,24 @@
+.ng-valid:not(form) {
+  border-left: 3px solid #42A948; /* green */
+}
+
+.ng-invalid:not(form) {
+  border-left: 3px solid #b94a48; /* red */
+}
+
+.show-valid {
+  border: 0 !important;
+}
+
+.btn:disabled {
+}
+
+label sup {
+  color: red;
+}
+
+.result {
+  color: red;
+  font-weight: bold;
+  border-left: 1px solid #ccc !important;
+}

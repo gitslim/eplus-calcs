@@ -1,0 +1,10 @@
+.modal-header {
+  padding: 30px;
+  background-color: #F86923;
+}
+.modal-header .close{
+  margin-top: -9px;
+}
+.modal-title{
+  line-height: 0;
+}
